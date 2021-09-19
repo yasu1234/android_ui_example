@@ -1,4 +1,4 @@
-package com.example.ui_example
+package com.example.ui_example.tutorial
 
 import android.content.Context
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.ui_example.R
 import kotlinx.android.synthetic.main.fragment_tutorial_last.*
 
 class TutorialLastFragment : Fragment() {
