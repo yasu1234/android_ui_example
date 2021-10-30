@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".maintab.HomeActivity"
+            android:name=".tutorial.MainActivity"
             android:label="@string/title_activity_home">
         </activity>
-        <activity android:name=".tutorial.MainActivity">
+        <activity android:name=".maintab.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

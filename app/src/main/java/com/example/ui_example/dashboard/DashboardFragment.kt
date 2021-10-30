@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.ui_example.R
+import kotlinx.android.synthetic.main.fragment_dashboard.*
 
 class DashboardFragment : Fragment() {
 
@@ -22,10 +23,21 @@ class DashboardFragment : Fragment() {
         dashboardViewModel =
             ViewModelProviders.of(this).get(DashboardViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
-        dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val margin = view.context.resources.getDimension(R.dimen.card_margin)
+        val offset = view.context.resources.getDimension(R.dimen.card_offset)
+
+        cardPager.adapter = CardSlideAdapter(listOf(1, 2, 3, 4))
+        cardPager.offscreenPageLimit = 2
+        cardPager.setPageTransformer { page, position ->
+            val offset = position * (2 * offset + margin)
+            page.translationX = -offset
+        }
     }
 }
