@@ -30,8 +30,14 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val countList = listOf<Int>(1, 2, 3, 4, 5, 6, 7, 8)
-        homeRecyclerView.adapter = HomeAdapter(countList)
+        val countList = listOf(1, 2, 3, 4, 5, 6, 7, 8)
+        val adapter = HomeAdapter(countList)
+        homeRecyclerView.adapter = adapter
         homeRecyclerView.layoutManager = GridLayoutManager(view.context, 2, RecyclerView.VERTICAL, false)
+
+        adapter.setListner(object: HomeAdapter.HomeAdapterListner {
+            override fun contentTapped(position: Int) {
+            }
+        })
     }
 }
