@@ -1,5 +1,6 @@
 package com.example.ui_example.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ui_example.R
+import com.example.ui_example.list.SimpleRecyclerViewActivity
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
@@ -37,7 +39,13 @@ class HomeFragment : Fragment() {
 
         adapter.setListner(object: HomeAdapter.HomeAdapterListner {
             override fun contentTapped(position: Int) {
+                presentSimpleRecyclerActivity()
             }
         })
+    }
+
+    private fun presentSimpleRecyclerActivity() {
+        val intent = Intent(requireContext(), SimpleRecyclerViewActivity::class.java)
+        startActivity(intent)
     }
 }
