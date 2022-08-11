@@ -22,6 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".list.SimpleRecyclerViewActivity" />
+        <activity android:name=".layout.TablayoutActivity"/>
     </application>
 
 </manifest>
