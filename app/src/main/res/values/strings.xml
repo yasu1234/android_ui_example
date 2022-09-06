@@ -7,4 +7,5 @@
     <string name="title_home">ホーム</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">上タブ切り替え</string>
+    <string name="plus_mark">+</string>
 </resources>

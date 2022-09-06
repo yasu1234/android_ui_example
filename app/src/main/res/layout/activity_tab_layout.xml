@@ -6,10 +6,12 @@
         android:id="@+id/tableRow1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
+
         <Button
             android:id="@+id/button1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/radius_button"
             android:text="7" />
         <Button
             android:id="@+id/button2"
@@ -75,10 +77,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="." />
+
         <Button
             android:id="@+id/button13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="+" />
+            android:text="@string/plus_mark"
+            android:textColor="@color/colorPrimary" />
     </TableRow>
 </TableLayout>
