@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ui_example.R
 import com.example.ui_example.layout.TablayoutActivity
+import com.example.ui_example.list.ExpandableListActivity
 import com.example.ui_example.list.SimpleRecyclerViewActivity
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -49,6 +50,8 @@ class HomeFragment : Fragment() {
                     presentSimpleRecyclerActivity()
                 } else if (position == 1) {
                     presentTablayoutActivity()
+                } else if (position == 2) {
+                    presentExpandableListActivity()
                 }
             }
         })
@@ -66,6 +69,11 @@ class HomeFragment : Fragment() {
 
     private fun presentTablayoutActivity() {
         val intent = Intent(requireContext(), TablayoutActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun presentExpandableListActivity() {
+        val intent = Intent(requireContext(), ExpandableListActivity::class.java)
         startActivity(intent)
     }
 }

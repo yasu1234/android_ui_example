@@ -23,6 +23,7 @@
         </activity>
         <activity android:name=".list.SimpleRecyclerViewActivity" />
         <activity android:name=".layout.TablayoutActivity"/>
+        <activity android:name=".list.ExpandableListActivity"/>
     </application>
 
 </manifest>
