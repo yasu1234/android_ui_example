@@ -12,6 +12,7 @@ import com.example.ui_example.R
 import com.example.ui_example.layout.TablayoutActivity
 import com.example.ui_example.list.ExpandableListActivity
 import com.example.ui_example.list.SimpleRecyclerViewActivity
+import com.example.ui_example.widget.CustomGridItemDecoration
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
@@ -43,6 +44,8 @@ class HomeFragment : Fragment() {
         val adapter = HomeAdapter(countList)
         homeRecyclerView.adapter = adapter
         homeRecyclerView.layoutManager = GridLayoutManager(view.context, 2, RecyclerView.VERTICAL, false)
+
+        homeRecyclerView.addItemDecoration(CustomGridItemDecoration(requireContext()))
 
         adapter.setListner(object: HomeAdapter.HomeAdapterListner {
             override fun contentTapped(position: Int) {
