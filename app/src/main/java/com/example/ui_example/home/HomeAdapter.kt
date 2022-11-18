@@ -9,7 +9,7 @@ import com.example.ui_example.R
 import com.example.ui_example.tutorial.TutorialLastFragment
 
 class HomeAdapter(private val countList: List<Int>): RecyclerView.Adapter<HomeAdapter.CountListRecyclerViewHolder>() {
-    private lateinit var listner: HomeAdapterListner
+    private lateinit var listener: HomeAdapterListener
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeAdapter.CountListRecyclerViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.grid_list, parent, false)
@@ -24,7 +24,7 @@ class HomeAdapter(private val countList: List<Int>): RecyclerView.Adapter<HomeAd
         holder.countText.text = countList[position].toString()
 
         holder.itemView.setOnClickListener {
-            listner.contentTapped(position)
+            listener.contentTapped(position)
         }
     }
 
@@ -32,11 +32,11 @@ class HomeAdapter(private val countList: List<Int>): RecyclerView.Adapter<HomeAd
         var countText: TextView = itemView.findViewById(R.id.gridTextView)
     }
 
-    fun setListner(listner: HomeAdapterListner) {
-        this.listner = listner
+    fun setListener(listener: HomeAdapterListener) {
+        this.listener = listener
     }
 
-    interface HomeAdapterListner {
+    interface HomeAdapterListener {
         fun contentTapped(position: Int)
     }
 }

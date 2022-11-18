@@ -33,21 +33,37 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupUI()
+    }
+
+    private fun setupUI() {
+        setupActionBar()
+        setupRecyclerView()
+    }
+
+    private fun setupActionBar() {
         (activity as AppCompatActivity).supportActionBar?.title = "ActionBar"
         (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
         (activity as AppCompatActivity).supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_notifications_black_24dp)
 
         // Must define to be called onCreateOptionsMenu in the case of Fragment
         setHasOptionsMenu(true)
+    }
 
+    private fun setupRecyclerView() {
         val countList = listOf(1, 2, 3, 4, 5, 6, 7, 8)
         val adapter = HomeAdapter(countList)
         homeRecyclerView.adapter = adapter
-        homeRecyclerView.layoutManager = GridLayoutManager(view.context, 2, RecyclerView.VERTICAL, false)
+        homeRecyclerView.layoutManager = GridLayoutManager(
+            requireContext(),
+            2,
+            RecyclerView.VERTICAL,
+            false
+        )
 
         homeRecyclerView.addItemDecoration(CustomGridItemDecoration(requireContext()))
 
-        adapter.setListner(object: HomeAdapter.HomeAdapterListner {
+        adapter.setListener(object: HomeAdapter.HomeAdapterListener {
             override fun contentTapped(position: Int) {
                 if (position == 0) {
                     presentSimpleRecyclerActivity()
