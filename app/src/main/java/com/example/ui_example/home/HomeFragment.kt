@@ -54,13 +54,19 @@ class HomeFragment : Fragment() {
         val countList = listOf(1, 2, 3, 4, 5, 6, 7, 8)
         val adapter = HomeAdapter(countList)
         homeRecyclerView.adapter = adapter
-        homeRecyclerView.layoutManager = GridLayoutManager(
-            requireContext(),
-            2,
-            RecyclerView.VERTICAL,
-            false
-        )
 
+        val layoutManager = GridLayoutManager(requireContext(), 2).apply {
+            spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+                override fun getSpanSize(position: Int): Int {
+                    return when (adapter.getItemViewType(position)) {
+                        R.layout.grid_list -> 1
+                        else -> 2
+                    }
+                }
+            }
+        }
+
+        homeRecyclerView.layoutManager = layoutManager
         homeRecyclerView.addItemDecoration(CustomGridItemDecoration(requireContext()))
 
         adapter.setListener(object: HomeAdapter.HomeAdapterListener {

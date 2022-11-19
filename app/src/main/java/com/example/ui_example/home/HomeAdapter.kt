@@ -32,6 +32,10 @@ class HomeAdapter(private val countList: List<Int>): RecyclerView.Adapter<HomeAd
         var countText: TextView = itemView.findViewById(R.id.gridTextView)
     }
 
+    override fun getItemViewType(position: Int): Int {
+        return R.layout.grid_list
+    }
+
     fun setListener(listener: HomeAdapterListener) {
         this.listener = listener
     }

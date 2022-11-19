@@ -1,6 +1,7 @@
 package com.example.ui_example.widget
 
 import android.content.Context
+import android.graphics.Canvas
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
@@ -29,5 +30,13 @@ class CustomGridItemDecoration(context: Context) : RecyclerView.ItemDecoration()
                 outRect.set(0, if (isTop) margin else 0, 0, 0)
             }
         }
+    }
+
+    override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
+        super.onDraw(c, parent, state)
+    }
+
+    override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
+        super.onDrawOver(c, parent, state)
     }
 }
