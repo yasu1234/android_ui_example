@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".list.SimpleRecyclerViewActivity" />
-        <activity android:name=".layout.TablayoutActivity"/>
+        <activity android:name=".layout.GridLayoutActivity"/>
         <activity android:name=".list.ExpandableListActivity"/>
         <activity android:name=".web.WebActivity"/>
     </application>
