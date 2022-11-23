@@ -9,7 +9,8 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ui_example.R
-import com.example.ui_example.layout.TablayoutActivity
+import com.example.ui_example.layout.GridLayoutActivity
+import com.example.ui_example.layout.TabLayoutActivity
 import com.example.ui_example.list.ExpandableListActivity
 import com.example.ui_example.list.SimpleRecyclerViewActivity
 import com.example.ui_example.widget.CustomGridItemDecoration
@@ -71,12 +72,19 @@ class HomeFragment : Fragment() {
 
         adapter.setListener(object: HomeAdapter.HomeAdapterListener {
             override fun contentTapped(position: Int) {
-                if (position == 0) {
-                    presentSimpleRecyclerActivity()
-                } else if (position == 1) {
-                    presentTablayoutActivity()
-                } else if (position == 2) {
-                    presentExpandableListActivity()
+                when (position) {
+                    0 -> {
+                        presentSimpleRecyclerActivity()
+                    }
+                    1 -> {
+                        presentGridLayoutActivity()
+                    }
+                    2 -> {
+                        presentExpandableListActivity()
+                    }
+                    3 -> {
+                        presentTabLayoutActivity()
+                    }
                 }
             }
         })
@@ -92,8 +100,13 @@ class HomeFragment : Fragment() {
         startActivity(intent)
     }
 
-    private fun presentTablayoutActivity() {
-        val intent = Intent(requireContext(), TablayoutActivity::class.java)
+    private fun presentGridLayoutActivity() {
+        val intent = Intent(requireContext(), GridLayoutActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun presentTabLayoutActivity() {
+        val intent = Intent(requireContext(), TabLayoutActivity::class.java)
         startActivity(intent)
     }
 
