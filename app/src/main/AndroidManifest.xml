@@ -26,6 +26,6 @@
         <activity android:name=".list.ExpandableListActivity"/>
         <activity android:name=".web.WebActivity"/>
         <activity android:name=".layout.TabLayoutActivity"/>
+        <activity android:name=".button.ButtonsActivity"/>
     </application>
-
 </manifest>

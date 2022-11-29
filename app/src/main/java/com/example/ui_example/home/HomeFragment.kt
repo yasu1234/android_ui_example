@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ui_example.R
+import com.example.ui_example.button.ButtonsActivity
 import com.example.ui_example.layout.GridLayoutActivity
 import com.example.ui_example.layout.TabLayoutActivity
 import com.example.ui_example.list.ExpandableListActivity
@@ -85,6 +86,9 @@ class HomeFragment : Fragment() {
                     3 -> {
                         presentTabLayoutActivity()
                     }
+                    4 -> {
+                        presentButtonsActivity()
+                    }
                 }
             }
         })
@@ -112,6 +116,11 @@ class HomeFragment : Fragment() {
 
     private fun presentExpandableListActivity() {
         val intent = Intent(requireContext(), ExpandableListActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun presentButtonsActivity() {
+        val intent = Intent(requireContext(), ButtonsActivity::class.java)
         startActivity(intent)
     }
 }
