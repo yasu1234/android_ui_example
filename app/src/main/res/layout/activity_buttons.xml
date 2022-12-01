@@ -57,4 +57,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/defaultImageButton"
         app:srcCompat="@drawable/ic_home_black_24dp" />
+
+    <ImageButton
+        android:id="@+id/rippleImageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:background="?attr/selectableItemBackground"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/changeBackgroundColorImageButton"
+        app:srcCompat="@drawable/ic_home_black_24dp" />
+
+    <ImageButton
+        android:id="@+id/rippleForegroundImageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:background="?attr/selectableItemBackground"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rippleImageButton"
+        app:srcCompat="@drawable/ic_home_black_24dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
