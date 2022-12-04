@@ -27,7 +27,7 @@
         app:layout_constraintTop_toBottomOf="@+id/defaultButton" />
 
     <Button
-        android:id="@+id/button14"
+        android:id="@+id/selectorButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -44,7 +44,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button14"
+        app:layout_constraintTop_toBottomOf="@+id/selectorButton"
         app:srcCompat="@drawable/ic_home_black_24dp" />
 
     <ImageButton
@@ -90,4 +90,15 @@
         android:text="Press! BackGround Change"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rippleForegroundImageButton" />
+
+    <ImageButton
+        android:id="@+id/layerListImageButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:srcCompat="@drawable/layer_list_button" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
