@@ -27,5 +27,6 @@
         <activity android:name=".web.WebActivity"/>
         <activity android:name=".layout.TabLayoutActivity"/>
         <activity android:name=".button.ButtonsActivity"/>
+        <activity android:name=".editText.EditTextActivity"/>
     </application>
 </manifest>

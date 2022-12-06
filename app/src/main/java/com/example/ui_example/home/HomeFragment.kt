@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ui_example.R
 import com.example.ui_example.button.ButtonsActivity
+import com.example.ui_example.editText.EditTextActivity
 import com.example.ui_example.layout.GridLayoutActivity
 import com.example.ui_example.layout.TabLayoutActivity
 import com.example.ui_example.list.ExpandableListActivity
@@ -89,6 +90,9 @@ class HomeFragment : Fragment() {
                     4 -> {
                         presentButtonsActivity()
                     }
+                    5 -> {
+                        presentEditTextActivity()
+                    }
                 }
             }
         })
@@ -121,6 +125,11 @@ class HomeFragment : Fragment() {
 
     private fun presentButtonsActivity() {
         val intent = Intent(requireContext(), ButtonsActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun presentEditTextActivity() {
+        val intent = Intent(requireContext(), EditTextActivity::class.java)
         startActivity(intent)
     }
 }
