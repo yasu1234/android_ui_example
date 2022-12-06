@@ -17,7 +17,12 @@ class ExpandableListActivity: AppCompatActivity() {
     }
 
     private fun setupUI() {
+        setupActionBar()
         setupListView()
+    }
+
+    private fun setupActionBar() {
+        supportActionBar?.title = "ExpandableList"
     }
 
     private fun setupListView() {

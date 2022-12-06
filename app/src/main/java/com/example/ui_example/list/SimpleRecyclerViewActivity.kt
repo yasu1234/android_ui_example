@@ -18,7 +18,12 @@ class SimpleRecyclerViewActivity: AppCompatActivity() {
     }
 
     private fun setupUI() {
+        setupActionBar()
         setupAdapter()
+    }
+
+    private fun setupActionBar() {
+        supportActionBar?.title = "RecyclerView"
     }
 
     private fun setupAdapter() {
