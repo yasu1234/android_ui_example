@@ -5,4 +5,12 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="DatePickerDialog" parent="Theme.MaterialComponents.Light.Dialog" />
+    <style name="DatePickerDialog.Spinner">
+        <item name="android:datePickerStyle">@style/SpinnerDatePickerStyle</item>
+    </style>
+    <style name="SpinnerDatePickerStyle">
+        <item name="android:datePickerMode">spinner</item>
+        <item name="android:textColorPrimary">@color/colorPrimary</item>
+    </style>
 </resources>
