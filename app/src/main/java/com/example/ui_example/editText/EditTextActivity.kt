@@ -1,6 +1,7 @@
 package com.example.ui_example.editText
 
 import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ui_example.R
@@ -28,6 +29,11 @@ class EditTextActivity: AppCompatActivity() {
         val cal = Calendar.getInstance()
 
         val datePickerDialog = DatePickerDialog(this, R.style.DatePickerDialog_Spinner, {_, year, month, dayOfMonth ->
+            val timePickerDialog = TimePickerDialog(this, R.style.TimePickerDialog_Spinner, { _, hourOfDay, minutes ->
+            },cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true)
+            timePickerDialog.show()
+            timePickerDialog.getButton(TimePickerDialog.BUTTON_NEGATIVE).setTextColor(this.getColor(R.color.colorAccent))
+            timePickerDialog.getButton(TimePickerDialog.BUTTON_POSITIVE).setTextColor(this.getColor(R.color.colorAccent))
         }, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE))
         datePickerDialog.show()
         datePickerDialog.getButton(DatePickerDialog.BUTTON_POSITIVE).setTextColor(this.getColor(R.color.colorAccent))
