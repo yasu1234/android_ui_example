@@ -1,5 +1,6 @@
 package com.example.ui_example.widget
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.*
 import android.view.MotionEvent
@@ -26,7 +27,21 @@ abstract class SwipeHelper(private val recyclerView: RecyclerView
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
+    private val touchListener = View.OnTouchListener { _, event ->
+        if (swipedPosition < 0) return@OnTouchListener false
+        buttonsBuffer[swipedPosition]?.forEach { it.handle(event) }
+        recoverQueue.add(swipedPosition)
+        swipedPosition = -1
+        recoverSwipeItem()
+        true
+    }
+
     abstract fun instantiateUnderlayButton(position: Int): List<UnderlayButton>
+
+    init {
+        recyclerView.setOnTouchListener(touchListener)
+    }
 
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
         val position = viewHolder.adapterPosition
