@@ -133,7 +133,7 @@ abstract class SwipeHelper(private val recyclerView: RecyclerView
         private val clickListener: UnderlayButtonClickListener) {
         private var clickableRegion: RectF? = null
         private val textSizeInPixcel = textSize * context.resources.displayMetrics.density
-        private val horizontalPadding = 50.0f
+        private val horizontalPadding = 150.0f
         val intrinsticWidth: Float
 
         init {
