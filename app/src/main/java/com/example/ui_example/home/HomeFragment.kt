@@ -15,6 +15,7 @@ import com.example.ui_example.layout.GridLayoutActivity
 import com.example.ui_example.layout.TabLayoutActivity
 import com.example.ui_example.list.ExpandableListActivity
 import com.example.ui_example.list.SimpleRecyclerViewActivity
+import com.example.ui_example.textView.SpannableStringActivity
 import com.example.ui_example.widget.CustomGridItemDecoration
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -93,6 +94,9 @@ class HomeFragment : Fragment() {
                     5 -> {
                         presentEditTextActivity()
                     }
+                    6 -> {
+                        presentSpannableStringActivity()
+                    }
                 }
             }
         })
@@ -125,6 +129,11 @@ class HomeFragment : Fragment() {
 
     private fun presentButtonsActivity() {
         val intent = Intent(requireContext(), ButtonsActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun presentSpannableStringActivity() {
+        val intent = Intent(requireContext(), SpannableStringActivity::class.java)
         startActivity(intent)
     }
 

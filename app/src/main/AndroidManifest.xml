@@ -28,5 +28,6 @@
         <activity android:name=".layout.TabLayoutActivity"/>
         <activity android:name=".button.ButtonsActivity"/>
         <activity android:name=".editText.EditTextActivity"/>
+        <activity android:name=".textView.SpannableStringActivity"/>
     </application>
 </manifest>
