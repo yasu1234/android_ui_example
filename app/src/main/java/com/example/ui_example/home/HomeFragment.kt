@@ -15,6 +15,7 @@ import com.example.ui_example.layout.GridLayoutActivity
 import com.example.ui_example.layout.TabLayoutActivity
 import com.example.ui_example.list.ExpandableListActivity
 import com.example.ui_example.list.SimpleRecyclerViewActivity
+import com.example.ui_example.seekbar.SeekBarActivity
 import com.example.ui_example.textView.SpannableStringActivity
 import com.example.ui_example.widget.CustomGridItemDecoration
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -97,6 +98,9 @@ class HomeFragment : Fragment() {
                     6 -> {
                         presentSpannableStringActivity()
                     }
+                    7 -> {
+                        presentSeekBarActivity()
+                    }
                 }
             }
         })
@@ -139,6 +143,11 @@ class HomeFragment : Fragment() {
 
     private fun presentEditTextActivity() {
         val intent = Intent(requireContext(), EditTextActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun presentSeekBarActivity() {
+        val intent = Intent(requireContext(), SeekBarActivity::class.java)
         startActivity(intent)
     }
 }
