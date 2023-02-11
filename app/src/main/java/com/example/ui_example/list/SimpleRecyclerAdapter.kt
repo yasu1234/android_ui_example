@@ -8,8 +8,11 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ui_example.R
+import com.example.ui_example.home.HomeAdapter
 
 class SimpleRecyclerAdapter(): RecyclerView.Adapter<SimpleRecyclerAdapter.SimpleListViewHolder>() {
+    private lateinit var listener: SimpleRecyclerViewListener
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SimpleListViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.simple_list, parent, false)
@@ -23,6 +26,10 @@ class SimpleRecyclerAdapter(): RecyclerView.Adapter<SimpleRecyclerAdapter.Simple
     override fun onBindViewHolder(holder: SimpleListViewHolder, position: Int) {
         val title = differ.currentList[position]
         holder.titleTextView.text = title
+
+        holder.itemView.setOnClickListener {
+            listener.onTapped(position)
+        }
     }
 
     class SimpleListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -40,4 +47,12 @@ class SimpleRecyclerAdapter(): RecyclerView.Adapter<SimpleRecyclerAdapter.Simple
     }
 
     val differ = AsyncListDiffer(this, differCallBack)
+
+    fun setListener(listener: SimpleRecyclerViewListener) {
+        this.listener = listener
+    }
+
+    interface SimpleRecyclerViewListener {
+        fun onTapped(position: Int)
+    }
 }

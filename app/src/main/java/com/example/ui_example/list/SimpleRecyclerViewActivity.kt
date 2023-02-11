@@ -1,5 +1,6 @@
 package com.example.ui_example.list
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ui_example.R
 import com.example.ui_example.widget.SwipeHelper
+import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import kotlinx.android.synthetic.main.activity_simple_recycler.*
 
 class SimpleRecyclerViewActivity: AppCompatActivity() {
@@ -29,7 +31,7 @@ class SimpleRecyclerViewActivity: AppCompatActivity() {
     }
 
     private fun setupAdapter() {
-        val titleList = listOf("title1", "title2", "title3", "title4", "title5", "title6", "title7", "title8")
+        val titleList = listOf("license", "title2", "title3", "title4", "title5", "title6", "title7", "title8")
         val adapter = SimpleRecyclerAdapter()
         simpleRecyclerView.adapter = adapter
         simpleRecyclerView.layoutManager = LinearLayoutManager(this)
@@ -53,6 +55,14 @@ class SimpleRecyclerViewActivity: AppCompatActivity() {
         })
 
         itemTouchHelper.attachToRecyclerView(simpleRecyclerView)
+
+        adapter.setListener(object : SimpleRecyclerAdapter.SimpleRecyclerViewListener {
+            override fun onTapped(position: Int) {
+                if (position == 0) {
+                    presentOssLicensesMenuActivity()
+                }
+            }
+        })
     }
 
     private fun deleteButton(position: Int) : SwipeHelper.UnderlayButton {
@@ -66,4 +76,10 @@ class SimpleRecyclerViewActivity: AppCompatActivity() {
                 }
             })
     }
+
+    private fun presentOssLicensesMenuActivity() {
+        val intent = Intent(this, OssLicensesMenuActivity::class.java)
+        startActivity(intent)
+    }
+
 }
