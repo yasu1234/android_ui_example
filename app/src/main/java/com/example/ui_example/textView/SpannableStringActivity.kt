@@ -10,13 +10,17 @@ import android.text.style.ImageSpan
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.ui_example.R
+import com.example.ui_example.databinding.ActivitySpannableStringBinding
 import kotlinx.android.synthetic.main.activity_spannable_string.*
 
 class SpannableStringActivity: AppCompatActivity() {
+    private lateinit var binding: ActivitySpannableStringBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_spannable_string)
+        binding = ActivitySpannableStringBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         setupUI()
     }
@@ -30,7 +34,7 @@ class SpannableStringActivity: AppCompatActivity() {
             Spannable.SPAN_EXCLUSIVE_INCLUSIVE
         )
 
-        foregroundColorTextView.text = foregroundSpannable
+        binding.foregroundColorTextView.text = foregroundSpannable
 
         val imageSpannable = SpannableStringBuilder("Sample Text")
         val drawable: Drawable? = ContextCompat.getDrawable(this, R.drawable.ic_home_black_24dp)
@@ -40,6 +44,6 @@ class SpannableStringActivity: AppCompatActivity() {
         val span: ImageSpan? = drawable?.let { ImageSpan(it, ImageSpan.ALIGN_BASELINE) }
         imageSpannable.setSpan(span, imageSpannable.length - 1, imageSpannable.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
 
-        spannableImageTextView.text = imageSpannable
+        binding.spannableImageTextView.text = imageSpannable
     }
 }

@@ -5,16 +5,19 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.ui_example.R
-import kotlinx.android.synthetic.main.activity_main.*
+import com.example.ui_example.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val pagerAdapter = TutorialAdapter(this)
-        tutorialPager.adapter = pagerAdapter
+        binding.tutorialPager.adapter = pagerAdapter
     }
 
     private inner class TutorialAdapter(fa: FragmentActivity): FragmentStateAdapter(fa) {

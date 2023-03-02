@@ -6,17 +6,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.ui_example.R
+import com.example.ui_example.databinding.ActivitySimpleRecyclerBinding
 import com.example.ui_example.widget.SwipeHelper
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import kotlinx.android.synthetic.main.activity_simple_recycler.*
 
 class SimpleRecyclerViewActivity: AppCompatActivity() {
+    private lateinit var binding: ActivitySimpleRecyclerBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_simple_recycler)
+        binding = ActivitySimpleRecyclerBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         setupUI()
     }

@@ -7,22 +7,24 @@ import android.os.Bundle
 import android.util.Log
 import android.webkit.*
 import androidx.appcompat.app.AppCompatActivity
-import com.example.ui_example.R
+import com.example.ui_example.databinding.ActivityWebBinding
 import kotlinx.android.synthetic.main.activity_web.*
 
 class WebActivity: AppCompatActivity() {
+    private lateinit var binding: ActivityWebBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_web)
+        binding = ActivityWebBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val url = intent.getStringExtra("Web_Url")
 
         setupWebView()
 
         if (!url.isNullOrEmpty()) {
-            webView.loadUrl(url)
+            binding.webView.loadUrl(url)
         }
     }
 
@@ -37,7 +39,7 @@ class WebActivity: AppCompatActivity() {
         settings.loadWithOverviewMode = true
         settings.setSupportZoom(true)
 
-        webView.webViewClient = object :WebViewClient() {
+        binding.webView.webViewClient = object :WebViewClient() {
             override fun shouldOverrideUrlLoading(
                 view: WebView?,
                 request: WebResourceRequest?
@@ -59,7 +61,6 @@ class WebActivity: AppCompatActivity() {
                 error: WebResourceError?
             ) {
                 super.onReceivedError(view, request, error)
-
             }
 
             override fun onReceivedSslError(
@@ -73,7 +74,7 @@ class WebActivity: AppCompatActivity() {
             }
         }
 
-        webView.webChromeClient = object :WebChromeClient() {
+        binding.webView.webChromeClient = object :WebChromeClient() {
             override fun onJsAlert(
                 view: WebView?,
                 url: String?,

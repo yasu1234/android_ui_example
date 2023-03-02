@@ -5,15 +5,18 @@ import android.app.TimePickerDialog
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ui_example.R
+import com.example.ui_example.databinding.ActivityEditTextBinding
 import kotlinx.android.synthetic.main.activity_edit_text.*
 import java.util.*
 
 class EditTextActivity: AppCompatActivity() {
+    private lateinit var binding: ActivityEditTextBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_edit_text)
+        binding = ActivityEditTextBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         setupUI()
     }

@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.ui_example.R
 import com.example.ui_example.button.ButtonsActivity
+import com.example.ui_example.databinding.FragmentHomeBinding
 import com.example.ui_example.dialog.CustomDialog
 import com.example.ui_example.editText.EditTextActivity
 import com.example.ui_example.layout.GridLayoutActivity
@@ -21,24 +22,34 @@ import com.example.ui_example.widget.CustomGridItemDecoration
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
-
     private lateinit var homeViewModel: HomeViewModel
+
+    private var _binding: FragmentHomeBinding? = null
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         homeViewModel =
             ViewModelProviders.of(this).get(HomeViewModel::class.java)
 
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         setupUI()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun setupUI() {
@@ -58,7 +69,7 @@ class HomeFragment : Fragment() {
     private fun setupRecyclerView() {
         val countList = listOf(1, 2, 3, 4, 5, 6, 7, 8, 9)
         val adapter = HomeAdapter(countList)
-        homeRecyclerView.adapter = adapter
+        binding.homeRecyclerView.adapter = adapter
 
         val layoutManager = GridLayoutManager(requireContext(), 2).apply {
             spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
@@ -71,8 +82,8 @@ class HomeFragment : Fragment() {
             }
         }
 
-        homeRecyclerView.layoutManager = layoutManager
-        homeRecyclerView.addItemDecoration(CustomGridItemDecoration(requireContext()))
+        binding.homeRecyclerView.layoutManager = layoutManager
+        binding.homeRecyclerView.addItemDecoration(CustomGridItemDecoration(requireContext()))
 
         adapter.setListener(object: HomeAdapter.HomeAdapterListener {
             override fun contentTapped(position: Int) {

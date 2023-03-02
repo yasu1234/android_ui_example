@@ -2,16 +2,17 @@ package com.example.ui_example.list
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.ui_example.R
-import kotlinx.android.synthetic.main.activity_expandable_list.*
+import com.example.ui_example.databinding.ActivityExpandableListBinding
 
 class ExpandableListActivity: AppCompatActivity() {
+    private lateinit var binding: ActivityExpandableListBinding
     private lateinit var adapter: ExpandableListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_expandable_list)
+        binding = ActivityExpandableListBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         setupUI()
     }
@@ -28,6 +29,6 @@ class ExpandableListActivity: AppCompatActivity() {
     private fun setupListView() {
         val dictionary = mapOf("title1" to listOf("foo", "bar", "fizz", "buzz"), "title2" to listOf("fizz"))
         adapter = ExpandableListAdapter(this, dictionary)
-        expandableList.setAdapter(adapter)
+        binding.expandableList.setAdapter(adapter)
     }
 }
