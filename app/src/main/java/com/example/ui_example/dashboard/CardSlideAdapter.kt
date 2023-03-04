@@ -19,7 +19,12 @@ class CardSlideAdapter(private val countList: List<Int>): RecyclerView.Adapter<C
     }
 
     override fun onBindViewHolder(holder: CardListViewHolder, position: Int) {
-        holder.cardText.text = countList[position].toString()
+        // lineSpacingMultiplier is ratio to word
+        if (position == 0) {
+            holder.cardText.text = countList[position].toString() + "これはlineSpacingExtraを30spに設定しています。改行して設定が反映できているかを判定します。"
+        } else {
+            holder.cardText.text = countList[position].toString()
+        }
     }
 
     class CardListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
