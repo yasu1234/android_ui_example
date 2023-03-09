@@ -8,4 +8,5 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">上タブ切り替え</string>
     <string name="plus_mark">+</string>
+    <string name="text_scroll_explanation">スクロールしたら表示されるよ！</string>
 </resources>

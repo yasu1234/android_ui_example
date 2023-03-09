@@ -30,5 +30,6 @@
         <activity android:name=".editText.EditTextActivity"/>
         <activity android:name=".textView.SpannableStringActivity"/>
         <activity android:name=".seekbar.SeekBarActivity"/>
+        <activity android:name=".list.ScrollViewActivity"/>
     </application>
 </manifest>
