@@ -17,7 +17,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -31,5 +30,6 @@
         <activity android:name=".textView.SpannableStringActivity"/>
         <activity android:name=".seekbar.SeekBarActivity"/>
         <activity android:name=".list.ScrollViewActivity"/>
+        <activity android:name=".list.CoordinatorLayoutActivity"/>
     </application>
 </manifest>
