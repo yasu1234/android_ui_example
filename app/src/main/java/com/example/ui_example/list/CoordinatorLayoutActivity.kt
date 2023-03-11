@@ -1,8 +1,10 @@
 package com.example.ui_example.list
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ui_example.databinding.ActivityCoordinatorLayoutBinding
+import kotlinx.android.synthetic.main.activity_coordinator_layout.*
 
 class CoordinatorLayoutActivity: AppCompatActivity() {
     private lateinit var binding: ActivityCoordinatorLayoutBinding
@@ -24,9 +26,21 @@ class CoordinatorLayoutActivity: AppCompatActivity() {
 
     private fun setupUI() {
         setupActionBar()
+        setupAppBar()
     }
 
     private fun setupActionBar() {
         supportActionBar?.hide()
+    }
+
+    private fun setupAppBar() {
+        appbar.setOnClickListener {
+            presentCustomCoordinatorLayoutActivity()
+        }
+    }
+
+    private fun presentCustomCoordinatorLayoutActivity() {
+        val intent = Intent(this, CustomCoordinatorLayoutActivity::class.java)
+        startActivity(intent)
     }
 }
