@@ -23,5 +23,10 @@ class DifferentTypeRecyclerViewActivity: AppCompatActivity() {
 
         binding.differentTypeRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.differentTypeRecyclerView.adapter = adapter
+
+        adapter.setOnItemListener(object: DifferentTypeRecyclerAdapter.OnItemListener {
+            override fun onNextButtonPushed() {
+            }
+        })
     }
 }

@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ui_example.R
@@ -24,7 +25,11 @@ class DifferentTypeRecyclerAdapter(
                 return HogeViewHolder(inflater.inflate(R.layout.adapter_hoge, viewGroup, false))
             }
 
-            override fun bindViewHolder(holder: RecyclerView.ViewHolder, itemType: ItemType) {
+            override fun bindViewHolder(
+                holder: RecyclerView.ViewHolder,
+                itemType: ItemType,
+                listener: OnItemListener
+            ) {
                 holder as HogeViewHolder
 
                 holder.titleText.text = itemType.status
@@ -35,7 +40,11 @@ class DifferentTypeRecyclerAdapter(
                 return FugaViewHolder(inflater.inflate(R.layout.adapter_fuga, viewGroup, false))
             }
 
-            override fun bindViewHolder(holder: RecyclerView.ViewHolder, itemType: ItemType) {
+            override fun bindViewHolder(
+                holder: RecyclerView.ViewHolder,
+                itemType: ItemType,
+                listener: OnItemListener
+            ) {
                 holder as FugaViewHolder
 
                 holder.titleText.text = itemType.status
@@ -46,10 +55,18 @@ class DifferentTypeRecyclerAdapter(
                 return PiyoViewHolder (inflater.inflate(R.layout.adapter_piyo, viewGroup, false))
             }
 
-            override fun bindViewHolder(holder: RecyclerView.ViewHolder, itemType: ItemType) {
+            override fun bindViewHolder(
+                holder: RecyclerView.ViewHolder,
+                itemType: ItemType,
+                listener: OnItemListener
+            ) {
                 holder as PiyoViewHolder
 
                 holder.titleText.text = itemType.status
+
+                holder.nextButton.setOnClickListener {
+                    listener.onNextButtonPushed()
+                }
             }
         };
 
@@ -65,11 +82,11 @@ class DifferentTypeRecyclerAdapter(
         }
 
         abstract fun createViewHolder(inflater: LayoutInflater, viewGroup: ViewGroup?): RecyclerView.ViewHolder
-
-        abstract fun bindViewHolder(holder: RecyclerView.ViewHolder, itemType: ItemType)
+        abstract fun bindViewHolder(holder: RecyclerView.ViewHolder, itemType: ItemType, listener: OnItemListener)
     }
 
     private val inflater = LayoutInflater.from(context)
+    lateinit var listener: OnItemListener
 
     override fun getItemCount(): Int {
         return itemList.size
@@ -83,7 +100,7 @@ class DifferentTypeRecyclerAdapter(
     // ViewにデータをBindする時に呼ばれる
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = itemList[position]
-        ViewType.forId(holder.itemViewType).bindViewHolder(holder, item)
+        ViewType.forId(holder.itemViewType).bindViewHolder(holder, item, listener)
     }
 
     // You can use different layouts by overriding getItemViewType in the Adapter and returning the ViewType according to the data.
@@ -104,6 +121,14 @@ class DifferentTypeRecyclerAdapter(
         }
     }
 
+    interface OnItemListener {
+        fun onNextButtonPushed()
+    }
+
+    fun setOnItemListener(listener: OnItemListener) {
+        this.listener = listener
+    }
+
     companion object {
         private class HogeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             val titleText: TextView = itemView.findViewById(R.id.hogeTitleTextView)
@@ -115,6 +140,7 @@ class DifferentTypeRecyclerAdapter(
 
         private class PiyoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             val titleText: TextView = itemView.findViewById(R.id.piyoTitleTextView)
+            val nextButton: Button = itemView.findViewById(R.id.piyoNextButton)
         }
     }
 }
