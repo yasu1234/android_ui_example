@@ -32,5 +32,6 @@
         <activity android:name=".list.ScrollViewActivity"/>
         <activity android:name=".list.CoordinatorLayoutActivity"/>
         <activity android:name=".list.CustomCoordinatorLayoutActivity" android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"/>
+        <activity android:name=".list.DifferentTypeRecyclerViewActivity"/>
     </application>
 </manifest>

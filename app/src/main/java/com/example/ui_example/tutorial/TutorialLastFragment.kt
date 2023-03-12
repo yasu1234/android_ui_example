@@ -39,6 +39,5 @@ class TutorialLastFragment : Fragment() {
         if (context is TutorialButtonClickListner) {
             lister = context
         }
-
     }
 }

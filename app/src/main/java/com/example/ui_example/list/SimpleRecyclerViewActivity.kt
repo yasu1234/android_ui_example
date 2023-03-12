@@ -33,7 +33,7 @@ class SimpleRecyclerViewActivity: AppCompatActivity() {
     }
 
     private fun setupAdapter() {
-        val titleList = listOf("license", "title2", "title3", "title4", "title5", "title6", "title7", "title8")
+        val titleList = listOf("license", "Different Type RecyclerView cell", "title3", "title4", "title5", "title6", "title7", "title8")
         val adapter = SimpleRecyclerAdapter()
         simpleRecyclerView.adapter = adapter
         simpleRecyclerView.layoutManager = LinearLayoutManager(this)
@@ -62,6 +62,8 @@ class SimpleRecyclerViewActivity: AppCompatActivity() {
             override fun onTapped(position: Int) {
                 if (position == 0) {
                     presentOssLicensesMenuActivity()
+                } else if (position == 1) {
+                    presentDifferentTypeRecyclerViewActivity()
                 }
             }
         })
@@ -84,4 +86,8 @@ class SimpleRecyclerViewActivity: AppCompatActivity() {
         startActivity(intent)
     }
 
+    private fun presentDifferentTypeRecyclerViewActivity() {
+        val intent = Intent(this, DifferentTypeRecyclerViewActivity::class.java)
+        startActivity(intent)
+    }
 }
