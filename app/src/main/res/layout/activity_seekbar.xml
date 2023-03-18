@@ -5,6 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- background is background color -->
+    <!-- progressTint is progressed background color -->
+    <!-- secondaryProgressTint is also progressTint,
+    but if progressTint and secondaryProgressTint set, progressTint is primary to -->
+    <!-- progressBackgroundTint is seekbar background color -->
     <SeekBar
         android:id="@+id/simpleSeekBar"
         android:layout_width="0dp"
@@ -14,11 +19,16 @@
         android:layout_marginEnd="16dp"
         android:max="100"
         android:progress="50"
+        android:progressTint="@color/colorPrimaryDark"
+        android:secondaryProgressTint="@color/colorAccent"
+        android:thumbTint="@color/colorRed"
+        android:progressBackgroundTint="@color/colorRightBlue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <!-- max is discrete count. If you set 100, there is 100 discretes -->
+    <!-- To display graduations set style to "@style/Widget.AppCompat.SeekBar.Discrete" -->
     <SeekBar
         android:id="@+id/simpleDiscreteSeekBar"
         style="@style/Widget.AppCompat.SeekBar.Discrete"
@@ -29,6 +39,7 @@
         android:layout_marginEnd="16dp"
         android:max="10"
         android:progress="3"
+        android:tickMark="@drawable/common_google_signin_btn_icon_dark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/simpleSeekBar" />
