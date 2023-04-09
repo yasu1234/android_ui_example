@@ -3,6 +3,8 @@ package com.example.ui_example.editText
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ui_example.R
 import com.example.ui_example.databinding.ActivityEditTextBinding
@@ -22,10 +24,22 @@ class EditTextActivity: AppCompatActivity() {
     }
 
     private fun setupUI() {
-        datePickerEditText.keyListener = null
-        datePickerEditText.setOnClickListener {
+        binding.datePickerEditText.keyListener = null
+        binding.datePickerEditText.setOnClickListener {
             showDatePicker()
         }
+
+        // detect input text change
+        binding.defaultEditText.addTextChangedListener(object: TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+            }
+        })
     }
 
     private fun showDatePicker() {
