@@ -7,6 +7,7 @@ import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
 import android.text.style.ImageSpan
+import android.text.style.UnderlineSpan
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.ui_example.R
@@ -45,5 +46,15 @@ class SpannableStringActivity: AppCompatActivity() {
         imageSpannable.setSpan(span, imageSpannable.length - 1, imageSpannable.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
 
         binding.spannableImageTextView.text = imageSpannable
+
+        val underLineSpannable = SpannableStringBuilder("Sample Text")
+        underLineSpannable.setSpan(
+            ColoredUnderlineSpan(Color.RED, 0, 3),
+            0,
+            3,
+            Spannable.SPAN_EXCLUSIVE_INCLUSIVE
+        )
+
+        binding.spannableUnderLineTextView.text = underLineSpannable
     }
 }
