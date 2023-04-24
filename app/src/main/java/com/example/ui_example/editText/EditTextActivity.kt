@@ -8,7 +8,11 @@ import android.text.TextWatcher
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ui_example.R
 import com.example.ui_example.databinding.ActivityEditTextBinding
-import kotlinx.android.synthetic.main.activity_edit_text.*
+import com.google.android.material.datepicker.CalendarConstraints
+import com.google.android.material.datepicker.CompositeDateValidator
+import com.google.android.material.datepicker.DateValidatorPointBackward
+import com.google.android.material.datepicker.MaterialDatePicker
+import java.text.SimpleDateFormat
 import java.util.*
 
 class EditTextActivity: AppCompatActivity() {
@@ -27,6 +31,11 @@ class EditTextActivity: AppCompatActivity() {
         binding.datePickerEditText.keyListener = null
         binding.datePickerEditText.setOnClickListener {
             showDatePicker()
+        }
+
+        binding.materialDatePickerEditText.keyListener = null
+        binding.materialDatePickerEditText.setOnClickListener {
+            showMaterialDatePicker()
         }
 
         // detect input text change
@@ -55,5 +64,28 @@ class EditTextActivity: AppCompatActivity() {
         datePickerDialog.show()
         datePickerDialog.getButton(DatePickerDialog.BUTTON_POSITIVE).setTextColor(this.getColor(R.color.colorAccent))
         datePickerDialog.getButton(DatePickerDialog.BUTTON_NEGATIVE).setTextColor(this.getColor(R.color.colorAccent))
+    }
+
+    private fun showMaterialDatePicker() {
+        MaterialDatePicker.Builder.datePicker().apply {
+            // you can set to today
+            val dateValidatorMax = DateValidatorPointBackward.before(Date().time)
+
+            // if you set limit of start date, use DateValidatorPointForward
+            // val dateValidatorMin = DateValidatorPointForward.from
+
+            // create date limit list
+            val validators: List<CalendarConstraints.DateValidator> = listOf(dateValidatorMax)
+            val dateValidator: CalendarConstraints.DateValidator = CompositeDateValidator.allOf(validators)
+            val constraints: CalendarConstraints = CalendarConstraints.Builder()
+                .setValidator(dateValidator)
+                .build()
+            setCalendarConstraints(constraints)
+        }.build().apply {
+            addOnPositiveButtonClickListener { datetime ->
+                val dateString = SimpleDateFormat("yyyy/MM/dd", Locale.JAPAN).format(datetime)
+                binding.materialDatePickerEditText.setText(dateString)
+            }
+        }.show(supportFragmentManager, "MaterialDatePicker")
     }
 }
