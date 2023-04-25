@@ -33,5 +33,6 @@
         <activity android:name=".list.CoordinatorLayoutActivity"/>
         <activity android:name=".list.CustomCoordinatorLayoutActivity" android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"/>
         <activity android:name=".list.DifferentTypeRecyclerViewActivity"/>
+        <activity android:name=".fragment.FragmentActivity"/>
     </application>
 </manifest>
