@@ -12,6 +12,7 @@ import com.example.ui_example.button.ButtonsActivity
 import com.example.ui_example.databinding.FragmentHomeBinding
 import com.example.ui_example.dialog.CustomDialog
 import com.example.ui_example.editText.EditTextActivity
+import com.example.ui_example.fragment.FragmentActivity
 import com.example.ui_example.layout.GridLayoutActivity
 import com.example.ui_example.layout.TabLayoutActivity
 import com.example.ui_example.list.ExpandableListActivity
@@ -67,7 +68,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        val countList = listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+        val countList = listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11)
         val adapter = HomeAdapter(countList)
         binding.homeRecyclerView.adapter = adapter
 
@@ -117,6 +118,9 @@ class HomeFragment : Fragment() {
                     }
                     9 -> {
                         presentScrollViewActivity()
+                    }
+                    10 -> {
+                        presentFragmentActivity()
                     }
                 }
             }
@@ -170,6 +174,11 @@ class HomeFragment : Fragment() {
 
     private fun presentScrollViewActivity() {
         val intent = Intent(requireContext(), ScrollViewActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun presentFragmentActivity() {
+        val intent = Intent(requireContext(), FragmentActivity::class.java)
         startActivity(intent)
     }
 
